@@ -1,17 +1,21 @@
-# SQLdf
+# SQLDF - Structured Query Language (SQL) on DataFrames (DF)
 An API to run SQL (SQLite) queries on pandas.Dataframe objects.
 
 ## How it works
 1) It create a virtual in-memory SQLite3 database at runtime
 2) It convert the pd.Dataframe input(s) to SQL table(s)
 3) It proceed the SQL query on the table(s)
-4) It convert back the SQL table(s) to updated pd.Dataframe (s)
+4) It convert back the SQL table(s) to updated pd.Dataframe(s) if required
+5) It returns the result of the query if required
+
+## Requirements
+* 'pandas>=1.0'
 
 ## Installation
-With `pip`:
+With `pip` (on pypi):
 
 ```
-pip install sqldf -U
+pip install sqldf
 ```
 
 ## Examples of use
@@ -55,5 +59,3 @@ WHERE col_1 ;
 # Run the query
 df_view = run(query)
 ```
-## Requirements
-* 'pandas>=1.0'
