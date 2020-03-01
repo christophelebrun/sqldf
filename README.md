@@ -25,39 +25,39 @@ pip install sqldf
 # Import libraries
 import pandas as pd
 import numpy as np
-from sqldf.sqldf import run_query
+import sqldf
 
 # Create a dummy pd.Dataframe
 df = pd.DataFrame({'col1': ['A', 'B', np.NaN, 'C', 'D'], 'col2': ['F', np.NaN, 'G', 'H', 'I']})
 
 # Define a SQL (SQLite3) query
-sql_query = """
+query = """
 SELECT *
 FROM df
 WHERE col_1 IS NOT NULL;
 """
 
 # Run the query
-df_view = run_query(sql_query)
+df_view = sqldf.run(query)
 ```
 
 * UPDATE query that change inplace a pd.Dataframe
 ```python
 # Import libraries
 import pandas as pd
-from sqldf.sqldf import run_query
+import sqldf
 
 # Create a dummy pd.Dataframe
 url = ('https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv')
 tips = pd.read_csv(url)
 
 # Define a SQL (SQLite3) query
-sql_query = """
+query = """
 UPDATE tips
 SET tip = tip*2
 WHERE tip < 2;
 """
 
 # Run the query
-run_query(sql_query)
+sqldf.run(query)
 ```

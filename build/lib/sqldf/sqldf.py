@@ -88,7 +88,7 @@ def clean(query):
     return query
 
 
-def run_query(query):
+def run(query):
 
     import __main__
 
