@@ -20,6 +20,28 @@ pip install sqldf
 
 ## Examples of use
 
+* SELECT query with WHERE condition
+```python
+# Import libraries
+import pandas as pd
+import numpy as np
+from sqldf.sqldf import run
+
+# Create a dummy pd.Dataframe
+df = pd.DataFrame({'col1': ['A', 'B', np.NaN, 'C', 'D'], 'col2': ['F', np.NaN, 'G', 'H', 'I']})
+
+# Define a SQL (SQLite3) query
+query = """
+SELECT *
+FROM df
+WHERE col_1 IS NOT NULL;
+"""
+
+# Run the query
+df_view = run(query)
+```
+
+* UPDATE query that change inplace the value of a column
 ```python
 # Import libraries
 import pandas as pd
@@ -38,24 +60,4 @@ WHERE tip < 2;
 
 # Run the query
 run(query)
-```
-
-```python
-# Import libraries
-import pandas as pd
-import numpy as np
-from sqldf.sqldf import run
-
-# Create a dummy pd.Dataframe
-df = pd.DataFrame({'col1': ['A', 'B', np.NaN, 'C', 'D'], 'col2': ['F', np.NaN, 'G', 'H', 'I']})
-
-# Define a SQL (SQLite3) query
-query = """
-SELECT *
-FROM df
-WHERE col_1 ;
-"""
-
-# Run the query
-df_view = run(query)
 ```
