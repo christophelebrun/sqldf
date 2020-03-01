@@ -62,3 +62,6 @@ WHERE tip < 2;
 # Run the query
 sqldf.run(query)
 ```
+
+* More examples in the notebook:
+[Demonstration notebook for SQLDF](https://github.com/christophelebrun/sqldf/blob/master/demo/SQLDF_demo.ipynb)
