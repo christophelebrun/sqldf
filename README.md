@@ -19,7 +19,7 @@ pip install sqldf -U
 ```python
 # Import libraries
 import pandas as pd
-from sqldf import run
+from sqldf.sqldf import run
 
 # Create a dummy pd.Dataframe
 url = ('https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv')
@@ -40,7 +40,7 @@ run(query)
 # Import libraries
 import pandas as pd
 import numpy as np
-from sqldf import run
+from sqldf.sqldf import run
 
 # Create a dummy pd.Dataframe
 df = pd.DataFrame({'col1': ['A', 'B', np.NaN, 'C', 'D'], 'col2': ['F', np.NaN, 'G', 'H', 'I']})
