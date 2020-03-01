@@ -14,9 +14,9 @@ With `pip`:
 pip install sqldf -U
 ```
 
-# Examples of use
+## Examples of use
 
-```
+```python
 # Import libraries
 import pandas as pd
 from sqldf import run
@@ -36,7 +36,7 @@ WHERE tip < 2;
 run(query)
 ```
 
-```
+```python
 # Import libraries
 import pandas as pd
 import numpy as np
@@ -55,5 +55,5 @@ WHERE col_1 ;
 # Run the query
 df_view = run(query)
 ```
-# Requirements
+## Requirements
 * 'pandas>=1.0'
