@@ -93,8 +93,8 @@ def run(query):
     import __main__
 
     # Parse all the clause of the query
-    cleaned_query = clean(query)
-    parsed_query = parse(cleaned_query)
+    query = clean(query)
+    parsed_query = parse(query)
     
     # Creation of an "in memory" DB
     conn = sqlite3.connect(':memory:')
