@@ -41,7 +41,7 @@ WHERE col_1 IS NOT NULL;
 df_view = run_query(sql_query)
 ```
 
-* UPDATE query that change inplace the value of a column
+* UPDATE query that change inplace a pd.Dataframe
 ```python
 # Import libraries
 import pandas as pd
