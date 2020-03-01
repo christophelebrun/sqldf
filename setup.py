@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
  
 setup(name='sqldf',
  
-      version='0.3.4',
+      version='0.3.6',
  
       url='https://github.com/christophelebrun/sqldf',
  

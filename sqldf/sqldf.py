@@ -79,11 +79,11 @@ def clean(query):
     pattern = r'#.+?$'
     query = re.sub(pattern, '', query)
     
-    # Remove the break of lines (\n)
+    # Replace the break of lines (\n) by spaces
     query = re.sub("\n", " ", query)
     
-    # Remove the ";" at end of query
-    query = query.rstrip(";")
+    # Remove the spaces and ";" at end of query
+    query = query.rstrip("; ")
     
     return query
 

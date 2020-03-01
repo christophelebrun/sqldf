@@ -80,7 +80,7 @@ def clean(query):
     query = re.sub(pattern, '', query)
     
     # Remove the break of lines (\n)
-    query = re.sub("\n", "", query)
+    query = re.sub("\n", " ", query)
     
     # Remove the ";" at end of query
     query = query.rstrip(";")
