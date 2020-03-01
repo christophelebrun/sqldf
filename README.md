@@ -7,13 +7,15 @@ An API to run SQL (SQLite) queries on pandas.Dataframe objects.
 3) It proceed the SQL query on the table(s)
 4) It convert back the SQL table(s) to updated pd.Dataframe (s)
 
-## Installation
+## Installation
 With `pip`:
+
 ```
 pip install sqldf -U
 ```
 
-# Examples of use
+# Examples of use
+
 ```
 # Import libraries
 import pandas as pd
@@ -53,5 +55,5 @@ WHERE col_1 ;
 # Run the query
 df_view = run(query)
 ```
-# Requirements
+# Requirements
 * 'pandas>=1.0'
