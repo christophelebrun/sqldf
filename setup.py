@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
  
 setup(name='sqldf',
  
-      version='0.2',
+      version='0.3.1',
  
       url='https://github.com/christophelebrun/sqldf',
  
@@ -18,11 +18,9 @@ setup(name='sqldf',
  
       author_email='lebr1.christophe@gmail.com',
  
-      description='An API to run SQL queries (SQLite) on pandas.Dataframe objects.',
+      description='A simple way to run SQL queries (SQLite3) on pandas.Dataframe objects.',
 
-      packages=["sqldf"],
-    
-      package_dir={"sqldf": "sqldf"},
+      py_modules = ["sqldf"],
  
       long_description=long_description,
       

@@ -1,5 +1,5 @@
 # SQLDF - Structured Query Language (SQL) on DataFrames (DF)
-An API to run SQL (SQLite) queries on pandas.Dataframe objects.
+A simple way to run SQL (SQLite) queries on pandas.Dataframe objects.
 
 ## How it works
 1) It create a virtual in-memory SQLite3 database at runtime
@@ -25,39 +25,39 @@ pip install sqldf
 # Import libraries
 import pandas as pd
 import numpy as np
-from sqldf.sqldf import run
+from sqldf import run_query
 
 # Create a dummy pd.Dataframe
 df = pd.DataFrame({'col1': ['A', 'B', np.NaN, 'C', 'D'], 'col2': ['F', np.NaN, 'G', 'H', 'I']})
 
 # Define a SQL (SQLite3) query
-query = """
+sql_query = """
 SELECT *
 FROM df
 WHERE col_1 IS NOT NULL;
 """
 
 # Run the query
-df_view = run(query)
+df_view = run_query(sql_query)
 ```
 
 * UPDATE query that change inplace the value of a column
 ```python
 # Import libraries
 import pandas as pd
-from sqldf.sqldf import run
+from sqldf import run_query
 
 # Create a dummy pd.Dataframe
 url = ('https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv')
 tips = pd.read_csv(url)
 
 # Define a SQL (SQLite3) query
-query = """
+sql_query = """
 UPDATE tips
 SET tip = tip*2
 WHERE tip < 2;
 """
 
 # Run the query
-run(query)
+run_query(sql_query)
 ```
