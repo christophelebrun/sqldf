@@ -25,7 +25,7 @@ pip install sqldf
 # Import libraries
 import pandas as pd
 import numpy as np
-from sqldf.sqldf import sql_query
+from sqldf.sqldf import run_query
 
 # Create a dummy pd.Dataframe
 df = pd.DataFrame({'col1': ['A', 'B', np.NaN, 'C', 'D'], 'col2': ['F', np.NaN, 'G', 'H', 'I']})
@@ -45,7 +45,7 @@ df_view = run_query(sql_query)
 ```python
 # Import libraries
 import pandas as pd
-from sqldf.sqldf import sql_query
+from sqldf.sqldf import run_query
 
 # Create a dummy pd.Dataframe
 url = ('https://raw.github.com/pandas-dev/pandas/master/pandas/tests/data/tips.csv')
