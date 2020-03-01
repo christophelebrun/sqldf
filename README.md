@@ -9,10 +9,11 @@ A simple way to run SQL (SQLite) queries on pandas.Dataframe objects.
 5) It returns the result of the query if required
 
 ## Requirements
-* 'pandas>=1.0'
+* 'python' >= 3.5
+* 'pandas' >= 1.0
 
 ## Installation
-With `pip` (on pypi):
+With `pip` (from PyPI repository):
 
 ```
 pip install sqldf
