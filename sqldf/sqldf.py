@@ -55,6 +55,28 @@ def parse(query):
     return parsed_query
 
 
+def get_df_instances(query):
+    """This function parse the query to find all defined instances of
+    corresponding pd.DataFrame in the __main__ namespace."""
+
+    import __main__
+
+    splitted_query = query.split()
+    df_set = set()
+
+    # Looking if some pd.DataFrame exist with this name in __main__ namespace. 
+    for s in splitted_query:
+        s = s.strip(",; ")
+        try:
+            temp = eval("__main__." + s)
+            if isinstance(temp, pd.DataFrame):
+                df_set.add(s)
+        except:
+            pass
+
+    return df_set
+
+
 def clean(query):
     """This function clean an SQL query before parsing."""
     
@@ -88,7 +110,7 @@ def clean(query):
     return query
 
 
-def run(query):
+def run(query, verbose=0):
 
     import __main__
 
@@ -101,17 +123,7 @@ def run(query):
     c = conn.cursor()
 
     # Listing the input dataframes (already existing)
-    df_to_virtualize = set()
-    for kw in [
-        "FROM ",
-        "JOIN ",
-        "UPDATE ",
-        "INSERT INTO ",
-    ]:
-        try:
-            [df_to_virtualize.add(x) for x in parsed_query[kw]]
-        except KeyError:
-            pass
+    df_to_virtualize = get_df_instances(query)
     
     # Virtualization of the input dataframes
     index_names = dict()
@@ -121,6 +133,9 @@ def run(query):
         temp_df.to_sql(dataframe, conn)
         # Save the name of the index
         index_names[dataframe] = eval("__main__."+dataframe).index.name
+
+    if verbose > 0:
+        print("Virtualized pd.DataFrames:", df_to_virtualize)
 
     # Listing outputs dataframes
     df_to_create = set()
@@ -146,6 +161,9 @@ def run(query):
         exec("__main__."+virtual_df+".set_index('index', inplace=True)")
         # restore the name of the index
         exec("__main__."+virtual_df+".index.name = index_names[virtual_df]")
+    
+    if verbose > 0:
+        print("De-virtualized pd.DataFrames:", (df_to_virtualize | df_to_create))
     
     # Commit the change and close connexion
     conn.commit()
